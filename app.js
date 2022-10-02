@@ -16,13 +16,6 @@ app.use(cors())
 
 app.use('/api/', postsRouter)
 app.use('/auth/', authRouter)
-app.use('/', (req, res) => {
-    res.status(200).json({
-        message: 'Welcome To App!',
-        caution: 'Please GoTo Main App!',
-        danger: 'Visiting Here is Dangerous!'
-    })
-})
 
 app.use((req, res, next) => {
     res.status(500).json({

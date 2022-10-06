@@ -25,7 +25,7 @@ const login = async(req, res) => {
             return res.status(400).json({ error: 'Password Didnt Match!!' })
         }
 
-        const token = jwt.sign({ id: userExist._id }, process.env.SECRET, { expiresIn: '1d' })
+        const token = jwt.sign({ id: userExist._id }, process.env.SECRET, { expiresIn: '12h' })
 
         return res.status(200).json({
             token: token,
@@ -68,7 +68,7 @@ const register = async(req, res) => {
         const newUser = new authSchema({ firstname, lastname, email, password: hash })
         await newUser.save()
 
-        const token = jwt.sign({ id: newUser._id }, process.env.SECRET, { expiresIn: '1d' })
+        const token = jwt.sign({ id: newUser._id }, process.env.SECRET, { expiresIn: '12h' })
 
         return res.status(201).json({
             token: token,

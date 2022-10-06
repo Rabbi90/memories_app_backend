@@ -12,7 +12,9 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.static('images'))
 
-app.use(cors())
+app.use(cors({
+    origin: "https://memories-app0.netlify.app",
+}))
 
 app.use('/api/', postsRouter)
 app.use('/auth/', authRouter)
